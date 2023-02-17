@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner dado = new Scanner(System.in);
+        double media = 0;
+        int par = 0;
+        int impar = 0;
+        int pos = 0;
+        int neg = 0;
+
+        for (int i = 0; i < 5; i++) {
+            double x = dado.nextDouble();
+
+            if (x % 2 == 0) {
+                par++;
+                if (x > 0) {
+                    pos++;
+                } else if (x < 0) {
+                    neg++;
+                }
+            } else {
+                impar++;
+                if (x > 0) {
+                    pos++;
+                } else if (x < 0) {
+                    neg++;
+                }
+            }
+        }
+            System.out.println(par + " valor(es) par(es)");
+            System.out.println(impar + " valor(es) impar(es)");
+            System.out.println(pos + " valor(es) positivo(s)");
+            System.out.println(neg + " valor(es) negativo(s)");
+
+    }
+}
