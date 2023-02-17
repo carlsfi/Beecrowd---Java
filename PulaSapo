@@ -1,0 +1,65 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Sapo sapo = new Sapo();
+        TestarPulo testarPulo = new TestarPulo();
+
+        int P = sc.nextInt();
+        int N = sc.nextInt();
+        int C = 0;
+        for(int i = 0; i<N; i++){
+            sapo.setPulo(P);
+            testarPulo.setSalto(P);
+            C = sc.nextInt();
+            testarPulo.addLista(C);
+        }
+        System.out.println(testarPulo.calcularSalto());
+    }
+}
+
+class Sapo {
+    private int pulo;
+
+    public void setPulo(int pulo) {
+        this.pulo = pulo;
+    }
+    public int getPulo() {
+        return pulo;
+    }
+}
+
+class TestarPulo{
+    ArrayList<Integer> lista = new ArrayList<Integer>();
+
+    private int salto;
+
+    public void setSalto(int salto) {
+        this.salto = salto;
+    }
+    public int getSalto() {
+        return salto;
+    }
+
+    public void addLista(int cano){
+        lista.add(cano);
+    }
+    public String calcularSalto(){
+        int h = 0;
+        int win = 0;
+        int lose = 0;
+        int l = 0;
+        for(int k = 1; k < lista.size(); k++){
+            h = lista.get(l) - lista.get(k);
+            h = Math.abs(h);
+            if(h > this.salto){
+                return "GAME OVER";
+            }
+            l++;
+        }
+        return "YOU WIN";
+    }
+}
