@@ -1,0 +1,44 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Garcom b = new Garcom();
+        int X;
+        int Z;
+        int N = sc.nextInt();
+        int q = 0;
+
+        for(int i = 0; i < N; i++){
+            X = sc.nextInt();
+            b.setLts(X);
+            Z = sc.nextInt();
+            b.setCps(Z);
+            if(b.getLts() > b.getCps()){
+                q=q+b.getCps();
+            }
+        }
+        System.out.println(q);
+    }
+}
+
+class Garcom {
+    private int cps;
+    private int lts;
+
+
+    public int getLts(){
+        return this.lts;
+    }
+    public void setLts(int latas){
+        this.lts = latas;
+    }
+
+    public int getCps(){
+        return this.cps;
+    }
+    public void setCps(int copos){
+        this.cps = copos;
+    }
+    
+}
