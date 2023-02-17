@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        int x = scan.nextInt();
+        double soma = 0;
+        int contador = 0;
+        
+        for(int i = 0; x >= 0; i++){
+            contador++;
+            soma = soma + x;
+            x = scan.nextInt();
+        }
+        double media = soma/contador;
+        System.out.println(String.format("%.2f",media));
+    }
+}
