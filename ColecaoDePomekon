@@ -1,0 +1,80 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Pomekon pomekon = new Pomekon();
+        Mochila mochila = new Mochila();
+
+        int n = sc.nextInt();
+        String nomePomekon;
+
+        for(int i = 0; i < n; i++){
+            nomePomekon = sc.next();
+            pomekon.setNome(nomePomekon);
+            mochila.adicionarPomekon(pomekon.getNome());
+
+        }
+        System.out.println("Falta(m) " + mochila.pomekonsRFinais() + " pomekon(s).");
+    }
+}
+
+class Pomekon {
+    private String nome;
+
+    public String getNome() {
+        return nome;
+    }
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+}
+
+class Mochila {
+    ArrayList<String> lista = new ArrayList<String>();
+    int cont;
+    int subt;
+    int pomekonsT = 151;
+
+    public int getPomekonsT() {
+        return pomekonsT;
+    }
+
+    int pomekonsRestantess;
+
+    public int getPomekonsRestantess() {
+        return pomekonsRestantess;
+    }
+
+    public void setPomekonsRestantess(int pomekonsRestantes) {
+        this.pomekonsRestantess = pomekonsRestantes;
+    }
+
+    public void setCont(int cont) {
+        this.cont = cont;
+    }
+
+    public int getCont() {
+        return cont;
+    }
+
+    public int getSubt() {
+        return subt;
+    }
+
+    public void setSubt(int subt) {
+        this.subt = subt;
+    }
+
+    public void adicionarPomekon(String nome) {
+        if(!this.lista.contains(nome)){
+            this.lista.add(nome);
+        }
+    }
+
+    public int pomekonsRFinais() {
+        return this.getPomekonsT() - this.lista.size();
+    }
+}
