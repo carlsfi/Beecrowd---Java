@@ -1,0 +1,63 @@
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Main {
+ 
+    public static void main(String[] args) throws IOException {
+        Item i = new Item();
+        Scanner sc = new Scanner(System.in);
+        int x = sc.nextInt();
+        int y = sc.nextInt();
+        i.setCodigo(x);
+        i.setQuantidade(y);
+
+        System.out.printf("Total: R$ %.2f\n",i.valor());
+    }
+ 
+}
+
+class Item {
+    private int codigo;
+    private int quantidade;
+    private double preco;
+
+    public int getCodigo() {
+        return codigo;
+    }
+    public void setCodigo(int c){
+        this.codigo = c;
+    }
+
+    public int getQuantidade(){
+        return quantidade;
+    }
+    public void setQuantidade(int q){
+        this.quantidade = q;
+    }
+
+    public double getPreco(){
+        return preco;
+    }
+    public void setPreco(int p){
+        this.preco = p;
+    }
+
+    public double valor(){
+        if(getCodigo() == 1){
+            this.preco = 4.00;
+        }
+        else if (getCodigo() == 2){
+            this.preco = 4.50;
+        }
+        else if (getCodigo() == 3){
+            this.preco = 5.00;
+        }
+        else if (getCodigo() == 4){
+            this.preco = 2.00;
+        }
+        else if (getCodigo() == 5){
+            this.preco = 1.50;
+        }
+        return this.preco * this.quantidade;
+    }
+}
