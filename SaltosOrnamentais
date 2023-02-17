@@ -1,0 +1,105 @@
+import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Atleta atleta = new Atleta();
+        Competicao comp = new Competicao();
+
+        int n = sc.nextInt();
+        String nome;
+        float dificuldade = 0;
+        float notas = 0;
+
+        for(int i = 0; i < n; i++){
+            nome = sc.next();
+            dificuldade = sc.nextFloat();
+            atleta.setNome(nome);
+            atleta.setDificuldade(dificuldade);
+
+            for(int j = 0; j <= 6; j++){
+                notas = sc.nextFloat();
+                comp.listaNotas(notas);
+            }
+            atleta.setNota(comp.nota(atleta.getDificuldade()));
+            System.out.printf("%s %.2f\n",atleta.getNome(),atleta.getNota());
+            comp.lista.clear();
+        }
+    }
+}
+
+class Atleta {
+    private String nome;
+    private float nota;
+    private float dificuldade;
+
+    public Atleta() {
+        this.nota = 0;
+        this.dificuldade = 0;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setNota(float nota) {
+        this.nota = nota;
+    }
+
+    public void setDificuldade(float dificuldade) {
+        this.dificuldade = dificuldade;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public float getNota() {
+        return nota;
+    }
+
+    public float getDificuldade() {
+        return dificuldade;
+    }
+}
+
+class Competicao extends Atleta{
+    ArrayList<Float> lista = new ArrayList<Float>();
+
+    private float somaNotas;
+
+    public void setSomaNotas(float somaNotas) {
+        this.somaNotas = somaNotas;
+    }
+
+    public float getSomaNotas() {
+        return somaNotas;
+    }
+
+    public void listaNotas(float n) {
+        this.lista.add(n);
+    }
+
+    public int tamanhoLista() {
+        return this.lista.size();
+    }
+
+    public float nota(float d) {
+        float notaF = 0;
+        float soma = 0;
+        int aux = 0;
+        Collections.sort(this.lista);
+        this.lista.remove(0);
+        int index = tamanhoLista();
+        this.lista.remove(index - 1);
+        aux = tamanhoLista();
+        for (int i = 0; i < this.lista.size(); i++) {
+            soma = soma + (this.lista.get(i));
+        }
+        notaF = soma * d;
+        return notaF;
+    }
+}
