@@ -1,0 +1,94 @@
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Main {
+ 
+    public static void main(String[] args) throws IOException {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        for(int i = 0; i<n; i++){
+            int b = sc.nextInt();
+            int x = sc.nextInt();
+            int y = sc.nextInt();
+            int z = sc.nextInt();
+
+            Pomekon p1 = new Pomekon(x,y,z);
+            if(z % 2 == 0){
+                p1.setBonus(b);
+                p1.valorGolpe();
+            }else{
+                p1.setBonus(0);
+                p1.valorGolpe();
+            }
+
+            x = sc.nextInt();
+            y = sc.nextInt();
+            z = sc.nextInt();
+            Pomekon p2 = new Pomekon(x,y,z);
+            if(z % 2 == 0){
+                p2.setBonus(b);
+                p2.valorGolpe();
+            }else{
+                p2.setBonus(0);
+                p2.valorGolpe();
+            }
+
+            if(p1.valorGolpe() == p2.valorGolpe()){
+                System.out.println("Empate");
+            }else if(p1.valorGolpe() > p2.valorGolpe()){
+                System.out.println("Dabriel");
+            }else if(p2.valorGolpe() > p1.valorGolpe()){
+                System.out.println("Guarte");
+            }
+
+        }
+    }
+ 
+}
+
+class Pomekon {
+    public Pomekon(int ap, int dp, int lt) {
+        this.ap = ap;
+        this.dp = dp;
+        this.lt = lt;
+    }
+
+    private int ap;
+    private int dp;
+    private int lt;
+    private int bonus;
+
+    public int getAp(){
+        return ap;
+    }
+    public void setAp(int ap){
+        this.ap = ap;
+    }
+
+    public int getDp() {
+        return dp;
+    }
+    public void setDp(int dp){
+        this.dp = dp;
+    }
+
+    public int getLt() {
+        return lt;
+    }
+    public void setLt(int lt){
+        this.lt = lt;
+    }
+
+
+    public int getBonus() {
+        return bonus;
+    }
+    public void setBonus(int bonus){
+        this.bonus = bonus;
+    }
+
+    public int valorGolpe(){
+        int valor = (this.ap + this.dp) / 2 + bonus;
+        return valor;
+    }
+}
