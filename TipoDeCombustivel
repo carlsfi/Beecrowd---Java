@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        
+        int n = scan.nextInt();
+        int alcool = 0;
+        int gasolina = 0;
+        int diesel = 0;
+
+        for(;n != 4;){
+            if(n == 1){
+                alcool++;
+            }
+            else if(n == 2){
+                gasolina++;
+            }
+            else if(n == 3){
+                diesel++;
+            }
+            n = scan.nextInt();
+        }
+        System.out.println("MUITO OBRIGADO");
+        System.out.println("Alcool: " + alcool);
+        System.out.println("Gasolina: " + gasolina);
+        System.out.println("Diesel: " + diesel);
+        scan.close();
+    }
+}
