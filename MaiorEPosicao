@@ -1,0 +1,23 @@
+import java.util.Scanner;
+ 
+public class Main {
+ 
+    public static void main(String[] args) {
+ 
+        Scanner dado = new Scanner(System.in);
+        int auxCont = 0;
+        int auxMaior = 1;
+
+        for(int i = 1; i <= 100; i++){
+            int N = dado.nextInt();
+            if(N>auxMaior){
+                auxMaior = N;
+                auxCont = i;
+            }
+        }
+        System.out.println(auxMaior);
+        System.out.println(auxCont);
+ 
+    }
+ 
+}
