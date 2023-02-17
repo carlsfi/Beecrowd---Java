@@ -1,0 +1,53 @@
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Main {
+
+    public static void main(String[] args) {
+        TestarMotor testarMotor = new TestarMotor();
+        Motor motor = new Motor();
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        for(int i = 0; i < n; i++){
+            int rpm = sc.nextInt();
+            motor.setRpm(rpm);
+            testarMotor.adicionarLista(rpm);
+
+        }
+        System.out.println(testarMotor.verificarLista());
+    }
+}
+
+class Motor {
+    private int rpm;
+
+    public int getRpm() {
+        return rpm;
+    }
+    public void setRpm(int rpm) {
+        this.rpm = rpm;
+    }
+}
+
+class TestarMotor extends Motor {
+
+    private ArrayList<Integer> arrayList = new ArrayList<Integer>();
+    public TestarMotor(){
+        arrayList.clear();
+    }
+
+    public void adicionarLista(int rpm){
+        this.arrayList.add(rpm);
+    }
+
+    public int verificarLista() {
+        for(int i = 1; i<this.arrayList.size(); i++){
+            if(this.arrayList.get(i) < this.arrayList.get(i - 1)){
+                return i + 1;
+            }
+        }
+        return 0;
+    }
+}
