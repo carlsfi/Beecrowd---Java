@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Avo avo = new Avo();
+        int N = sc.nextInt();
+        int S = sc.nextInt();
+        avo.setMovimento(S);
+        avo.setSaldoI(S);
+        
+        for(int i = 0; i < N; i++){
+            int X = sc.nextInt();
+            avo.setNovoS(X);
+            if(avo.getMovimento() > avo.getSaldo()){
+                avo.setMovimento(avo.getSaldo());
+            }
+        }
+        System.out.println(avo.getMovimento());
+    }
+}
+
+class Avo {
+    private int Saldo;
+    private int movimento;
+
+    public void setSaldoI(int saldo){
+        this.Saldo = saldo;
+    }
+
+    public void setNovoS(int saldo){
+        this.Saldo = this.Saldo + saldo;
+    }
+
+    public int getSaldo(){
+        return this.Saldo;
+    }
+
+    public void setMovimento(int movimento){
+        this.movimento = movimento;
+    }
+
+    public int getMovimento(){
+        return this.movimento;
+    }
+
+}
