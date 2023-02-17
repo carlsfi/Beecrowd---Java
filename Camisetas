@@ -1,0 +1,96 @@
+import java.util.*;
+import java.util.Comparator;
+
+public class Main {
+    
+    public static void main(String[] args) {
+        Scanner dado = new Scanner(System.in);
+        ArrayList<Pessoa> listaPessoas = new ArrayList<Pessoa>();
+        int n = Integer.parseInt(dado.nextLine());
+
+        while(n != 0){
+            for(int i = 0; i < n; i++){
+                String nome = dado.nextLine();
+                String [] camisa = dado.nextLine().split(" ");
+                String cor = camisa[0];
+                String tamanho = camisa[1];
+                Camisa c = new Camisa(cor, tamanho);
+                Pessoa p = new Pessoa(nome, c);
+                listaPessoas.add(p);
+            }
+            Collections.sort(listaPessoas, new ComparaPessoa());
+            for(int i = 0; i < n; i++){
+                System.out.println(listaPessoas.get(i).getCamisa().getCor() + " " + listaPessoas.get(i).getCamisa().getTamanho() + " " + listaPessoas.get(i).getNome());
+            }
+            listaPessoas.clear();
+            n = Integer.parseInt(dado.nextLine());
+            if(n > 0) System.out.println();
+        }
+    }
+}
+
+class Camisa {
+
+    private String cor;
+    private String tamanho;
+
+    public Camisa(String cor, String tamanho){
+        this.cor = cor;
+        this.tamanho = tamanho;
+    }
+
+    public String getCor(){
+        return this.cor;
+    }
+
+    public String getTamanho(){
+        return this.tamanho;
+    }
+
+    public void setCor(String cor){
+        this.cor = cor;
+    }
+
+    public void setTamanho(String tamanho){
+        this.tamanho = tamanho;
+    }
+}
+
+class Pessoa {
+
+    private String nome;
+    private Camisa camisa;
+
+    public Pessoa(String nome, Camisa camisa){
+        this.nome = nome;
+        this.camisa = camisa;
+    }
+
+    public String getNome(){
+        return this.nome;
+    }
+
+    public Camisa getCamisa(){
+        return this.camisa;
+    }
+
+    public void setNome(String nome){
+        this.nome = nome;
+    }
+
+    public void setCamisa(Camisa camisa){
+        this.camisa = camisa;
+    }
+}
+
+class ComparaPessoa implements Comparator<Pessoa> {
+    public int compare(Pessoa p1, Pessoa p2){
+        if(p1.getCamisa().getCor().compareTo(p2.getCamisa().getCor()) == 0){
+            if(p1.getCamisa().getTamanho().compareTo(p2.getCamisa().getTamanho()) == 0){
+                return p1.getNome().compareTo(p2.getNome());
+            }
+            else return -(p1.getCamisa().getTamanho().compareTo(p2.getCamisa().getTamanho()));
+        }
+        else return p1.getCamisa().getCor().compareTo(p2.getCamisa().getCor());
+    }
+}
