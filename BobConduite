@@ -1,0 +1,45 @@
+import java.io.IOException;
+ import java.util.Scanner;
+
+public  class Main {
+ 
+    public static void main(String[] args) throws IOException {
+        Scanner scan = new Scanner(System.in);
+        Raio r = new Raio();
+        int t = scan.nextInt();
+
+        for(int i = 0; t>i; i++){
+            int x = scan.nextInt();
+            int y = scan.nextInt();
+            r.setR1(x);
+            r.setR2(y);
+
+            System.out.println(r.Total());
+        }
+ 
+    }
+ 
+}
+
+class Raio {
+    private int r1;
+    private int r2;
+
+    public int getR1() {
+        return this.r1;
+    }
+    public void setR1(int r1){
+        this.r1 = r1;
+    }
+
+    public int getR2(){
+        return this.r2;
+    }
+    public void setR2(int r2){
+        this.r2 = r2;
+    }
+
+    public int Total(){
+        return r1 + r2;
+    }
+}
