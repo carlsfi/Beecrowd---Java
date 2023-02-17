@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class Main {
+ 
+    public static void main(String[] args) {
+ 
+    Scanner dado = new Scanner(System.in);
+    int pos = 0;
+    double media = 0;
+    
+    for(int i = 0; i<5; i++){
+    double x = dado.nextDouble();
+    if(x%2==0){
+        pos++;
+    }
+    }
+    media = media/pos;
+    System.out.println(pos + " valores pares");
+    }
+ 
+}
