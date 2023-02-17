@@ -1,0 +1,76 @@
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.Objects;
+
+public class Main {
+ 
+    public static void main(String[] args) throws IOException {
+        Scanner sc = new Scanner(System.in);
+        Jeep j = new Jeep();
+        int x = 0;
+        while(true) {
+            String m = sc.next();
+            if(Objects.equals(m, "ABEND")){
+                break;
+            }
+            int q = sc.nextInt();
+            j.setMovimento(m);
+            j.setQuantidade(q);
+
+            j.controleGeral();
+        }
+        System.out.println(j.getQuantidadeTuristas());
+        System.out.println(j.getContadorJeeps());
+    }
+ 
+}
+
+class Jeep {
+    private String movimento;
+    private int quantidade;
+    private int quantidadeTuristas;
+
+    private int contadorJeeps;
+
+
+    public int getContadorJeeps() {
+        return contadorJeeps;
+    }
+
+    public void setContadorJeeps(int contadorJeeps) {
+        this.contadorJeeps = contadorJeeps;
+    }
+
+    public int getQuantidadeTuristas() {
+        return quantidadeTuristas;
+    }
+    public void setQuantidadeTuristas(int quantidadeTuristas) {
+        this.quantidadeTuristas = quantidadeTuristas;
+    }
+
+    public String getMovimento() {
+        return movimento;
+    }
+    public void setMovimento(String movimento) {
+        this.movimento = movimento;
+    }
+
+    public int getQuantidade() {
+        return quantidade;
+    }
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public void controleGeral(){
+        if(Objects.equals(getMovimento(), "SALIDA")){
+            quantidadeTuristas += this.quantidade;
+            contadorJeeps += 1;
+        }else if(Objects.equals(getMovimento(), "VUELTA")){
+            quantidadeTuristas -= this.quantidade;
+            contadorJeeps -= 1;
+        }
+    }
+
+
+}
