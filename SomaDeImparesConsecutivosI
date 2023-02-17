@@ -1,0 +1,35 @@
+import java.util.Scanner;
+ 
+public class Main {
+ 
+    public static void main(String[] args){
+        
+        Scanner dado = new Scanner(System.in);
+        int X = dado.nextInt();
+        int Y = dado.nextInt();
+        int impar = 0;
+        int maior = 0;
+        int menor = 0;
+
+        if (X == Y) {
+        System.out.println(0);
+        }else {
+            if (X > Y) {
+            maior = X;
+            menor = Y;
+            } else if (Y > X) {
+            maior = Y;
+            menor = X;
+            }
+
+            for (menor = menor + 1; menor < maior; menor++) {
+            if (menor % 2 != 0) {
+                impar = impar + menor;
+            }
+            }
+            System.out.println(impar);
+        }
+ 
+    }
+ 
+}
