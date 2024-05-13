@@ -1,2 +1,2 @@
 # Beecrowd---Java
-Javascript codes sent on Beecrowd Plataform.
+Java codes sent on Beecrowd Plataform.
